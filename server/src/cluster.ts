@@ -14,9 +14,10 @@ import Telemetry from "./models/Telemetry";
 import net from "net";
 import { registerTelemetrySockets } from "./sockets/telemetrySocket";
 
-const numCPUs = os.cpus().length;
-const PORT = process.env.PORT || 5000;
+const numCPUs = 2; 
+const PORT = Number(process.env.PORT) || 5000;
 const MQTT_PORT = 1883;
+const MQTT_BROKER_URL = process.env.MQTT_BROKER_URL || "mqtt://broker.hivemq.com:1883";
 
 if (cluster.isPrimary) {
   (async () => {
